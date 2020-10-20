@@ -1,2 +1,4 @@
 # Vue Practice
- Practicing Vue (Pushing to Github for some reason)
+ As the name suggests. This is a scrap project for practicing vue. 
+
+##### (Pushing to Github for some reason)
