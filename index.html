@@ -20,6 +20,8 @@
       <h2>My Course Goal</h2>
       <p> Course name: {{ courseGoal.name }} </p>
       <p> Time Required: {{ courseGoal.timeRequired }} hours</p>
+      <!-- Vue Binding syntax, for which we use a vue directive-->
+      <p>Learn more <a v-bind:href="vueLink"> about Vue!</a></p>
     </section>
   </body>
 </html>

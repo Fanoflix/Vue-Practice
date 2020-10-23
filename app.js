@@ -4,7 +4,8 @@ const app = Vue.createApp({
             courseGoal: {
                 name: 'Vue.js 3 Course',
                 timeRequired: 20
-            }
+            },
+            vueLink: 'https://vuejs.org/'
         };
     }
 });
