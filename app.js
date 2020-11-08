@@ -7,6 +7,16 @@ const app = Vue.createApp({
             },
             vueLink: 'https://vuejs.org/'
         };
+    },
+    methods: {
+        outputGoal() { // This function can be called normally in the {{ }} brackets inside our HTML.
+            const randomNumber = Math.random();
+            if (randomNumber < 0.5) {
+                return 'Learn Vue';
+            } else {
+                return 'Master Vue';
+            }
+        }
     }
 });
 
