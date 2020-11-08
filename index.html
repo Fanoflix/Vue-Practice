@@ -18,7 +18,7 @@
     </header>
     <section id="user-goal">
       <h2>My Course Goal</h2>
-      <p> Course name: {{ outputGoal() }} </p> <!-- Calling the function normally -->
+      <p v-html="outputGoal()"></p> <!-- Calling the function normally -->
       <!-- Vue Binding syntax, for which we use a vue directive-->
       <p>Learn more <a v-bind:href="vueLink"> about Vue!</a></p>
     </section>
