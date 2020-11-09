@@ -21,6 +21,8 @@
       <button @click="IncrementCounter(5)"> Add 5</button> <!-- You can also type "IncrementCounter()". Both will work.-->
       <button v-on:click="DecrementCounter(5)" > Subtract 5</button>
       <p>Result: {{ counter }}</p>
+      <input type="text" v-on:input="SetName"> <!-- Calling SetName on every keystroke -->
+      <p>Your Name: {{ name }} </p>
     </section>
   </body>
 </html>
