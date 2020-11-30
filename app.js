@@ -3,16 +3,24 @@ const app = Vue.createApp({
         return {
             counter: 10,
             name: '',
-            confirmedName: '',
+            // confirmedName: '',
         };
     },
+    computed: {
+        fullName() { // Naming this as a data property.
+                    // You should name your computed properties just like your data properties.
+            console.log("Running COMPTUED again!....")
+            if (this.name === '') {
+                return '';
+            }
+            if (this.name.length > 4){ 
+                return this.name +' ' + 'Nasir';
+            }
+        }
+    },
     methods: {
-        ConfirmInput() {
-            this.confirmedName = this.name;
-        },
         ResetInput() {
             this.name = '';
-            this.confirmedName= '';
             this.counter = 0;
         },
         SubmitForm() {
@@ -26,11 +34,6 @@ const app = Vue.createApp({
                 this.counter = this.counter - num;
             }
         },
-        // SetName(event, lastName) {
-        //     this.name = event.target.value; // This is the value that the user entered.
-        //                                     // Now we cannot use the "Calling method" in our HTML.
-        //                                     // Must use "Pointing method".
-        // } // event.target gives us access to the element on which the event occured.
     }
 })
 

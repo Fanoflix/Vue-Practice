@@ -22,9 +22,10 @@
       <button v-on:click.left="DecrementCounter(5)" > Subtract 5 </button> <!-- .left doesnt need to be specified because it was the default. .right now requires a right-click for this button to work -->
       <p> Result: {{ counter }}</p>
       <p v-once> Intiial Counter:{{ counter }} </p>
-      <input type="text" v-model="name" v-on:keyup.enter="ConfirmInput"> <!-- Calling SetName on every keystroke. Added a new event with a modifier that calls ConfirmInput each time "enter" is pressed and released.-->
+      <input type="text" v-model="name"> <!-- Calling SetName on every keystroke. Added a new event with a modifier that calls ConfirmInput each time "enter" is pressed and released.-->
       <button v-on:click="ResetInput">Reset Input</button>
-      <p>Your Name: {{ confirmedName }} </p>
+      <p>Your Name: {{ fullName }} </p> <!-- Don't use paranthese for computed properties.
+      We don't CALL them, we just POINT to them and Vue calls them for us -->
 
       <form v-on:submit.prevent="SubmitForm"> <!-- .prevent is the event modifier here that prevents the browser default -->
         <input type="text">
