@@ -1,22 +1,44 @@
-const app = Vue.createApp({
+const app = Vue.createApp({ 
     data() {
         return {
             counter: 10,
             name: '',
-            // confirmedName: '',
+            fullName: '',
+            lastName: '',
         };
     },
-    computed: {
-        fullName() { // Naming this as a data property.
-                    // You should name your computed properties just like your data properties.
-            console.log("Running COMPTUED again!....")
-            if (this.name === '') {
-                return '';
+    watch: { // We can use the name we used in the data or computer property as a name for the watcher method
+        name(value) { // This tells Vue, that whenever the data attribute "name" changes, this watcher method will re-execute.
+        // We DO NOT return anything here
+        // The latest value of the watched property is automatically passed into the watched property.
+            if (value === '') {
+                this.fullName = '';
             }
-            if (this.name.length > 4){ 
-                return this.name +' ' + 'Nasir';
+            else {
+                this.fullName = value + ' ' + this.lastName;
+            }
+        },
+        lastName(value) {
+            if (value === '') {
+                this.fullName = '';
+            }
+            else {
+                this.fullName = this.name + ' ' + value;
             }
         }
+
+    },
+    computed: {
+        // fullName() { // Naming this as a data property.
+        //             // You should name your computed properties just like your data properties.
+        //     console.log("Running COMPTUED again!....")
+        //     if (this.name === '') {
+        //         return '';
+        //     }
+        //     if (this.name.length > 4){ 
+        //         return this.name +' ' + 'Nasir';
+        //     }
+        // }
     },
     methods: {
         ResetInput() {
