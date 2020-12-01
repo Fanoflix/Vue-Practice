@@ -19,11 +19,11 @@
     <section id="events">
       <h2>Events in Actions</h2>
       <button @click="IncrementCounter(5)"> Add 5 </button>
-      <button v-on:click.left="DecrementCounter(5)" > Subtract 5 </button> 
+      <button @click.left="DecrementCounter(5)" > Subtract 5 </button> 
       <p> Result: {{ counter }}</p>
       <input type="text" v-model="name">
       <input type="text" v-model="lastName">
-      <button v-on:click="ResetInput">Reset Input</button>
+      <button @click="ResetInput">Reset Input</button>
       <p>Your Name: {{ fullName }} </p> <!-- Don't use paranthese for computed properties.
       We don't CALL them, we just POINT to them and Vue calls them for us -->
  
