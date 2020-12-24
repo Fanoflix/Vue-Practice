@@ -16,8 +16,9 @@
     <header>
       <h1>Vue Dynamic Styling</h1>
     </header>
-    <section id="styling">
-      <div class="demo" :class="{active: boxAselected}" @click="boxSelected('A')"></div> <!--  Once you've bound the styles, you can feed it an object now (which normally isnt possible -->
+    <section id="styling"
+    ><!--  Once you've bound the styles, you can feed it an object now (which normally isnt possible) -->
+      <div class="demo" :class="boxAClasses" @click="boxSelected('A')"></div> <!-- boxAClasses returns an object in here, which the bound ":class" already expects. So this is basically the same as what we're doing below for box B and C-->
       <div class="demo" :class="{active: boxBselected}" @click="boxSelected('B')"></div>
       <div class="demo" :class="{active: boxCselected}" @click="boxSelected('C')"></div> 
     </section>
