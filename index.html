@@ -14,24 +14,12 @@
   </head>
   <body>
     <header>
-      <h1>Vue Course Goals</h1>
+      <h1>Vue Dynamic Styling</h1>
     </header>
-    <section id="events">
-      <h2>Events in Actions</h2>
-      <button @click="IncrementCounter(5)"> Add 5 </button>
-      <button @click.left="DecrementCounter(5)" > Subtract 5 </button> 
-      <p> Result: {{ counter }}</p>
-      <input type="text" v-model="name">
-      <input type="text" v-model="lastName">
-      <button @click="ResetInput">Reset Input</button>
-      <p>Your Name: {{ fullName }} </p> <!-- Don't use paranthese for computed properties.
-      We don't CALL them, we just POINT to them and Vue calls them for us -->
- 
-      <form v-on:submit.prevent="SubmitForm"> <!-- .prevent is the event modifier here that prevents the browser default -->
-        <input type="text">
-        <button>Sign Up</button>
-      </form>
-
+    <section id="styling">
+      <div class="demo" :style="{borderColor: boxAselected ? 'red' : '#ccc'}" @click="boxSelected('A')"></div> <!--  Once you've bound the styles, you can feed it an object now (which normally isnt possible -->
+      <div class="demo" :style="{borderColor: boxBselected ? 'red' : '#ccc'}" @click="boxSelected('B')"></div>
+      <div class="demo" :style="{borderColor: boxCselected ? 'red' : '#ccc'}" @click="boxSelected('C')"></div> 
     </section>
   </body>
 </html>
