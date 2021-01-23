@@ -14,13 +14,16 @@
   </head>
   <body>
     <header>
-      <h1>Vue Dynamic Styling</h1>
+      <h1>Vue Course Goals</h1>
     </header>
-    <section id="styling"
-    ><!--  Once you've bound the styles, you can feed it an object now (which normally isnt possible) -->
-      <div class="demo" :class="boxAClasses" @click="boxSelected('A')"></div> <!-- boxAClasses returns an object in here, which the bound ":class" already expects. So this is basically the same as what we're doing below for box B and C-->
-      <div :class="['demo', {active: boxBselected}]" @click="boxSelected('B')"></div>
-      <div class="demo" :class="{active: boxCselected}" @click="boxSelected('C')"></div> 
+    <section id="user-goals">
+      <h2>My course goals</h2>
+      <input type="text" />
+      <button>Add Goal</button>
+      <p>No goals have been added yet - please start adding some!</p>
+      <ul>
+        <li>Goal</li>
+      </ul>
     </section>
   </body>
 </html>
