@@ -7,12 +7,15 @@ const app = Vue.createApp({
     };
   },
   methods: {
-    addGoal(event) {
-      console.log(event.target.id)
+    addGoal() {
       if (this.enteredGoalValue !== '') {
         this.goals.push(this.enteredGoalValue);
       }
       this.enteredGoalValue = ''
+    },
+
+    removeItem(index) {
+      this.goals.splice(index, 1);
     }
   }
 });

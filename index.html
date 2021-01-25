@@ -19,18 +19,10 @@
     <section id="user-goals">
       <h2>My course goals</h2>
       <input id="inputbox" type="text" v-model="enteredGoalValue"/> <!-- Now thsi input tag is using "enteredGoalValue" variable as the source of truth.-->
-      <button id="HE" @click="addGoal">Add Goal</button>
+      <button @click="addGoal">Add Goal</button>
       <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
       <ul v-else>
-        <li v-for="(goal, index) in goals">{{index + 1}}: {{goal}}</li>
-      </ul>
-
-      <ul>
-        <li v-for="(value, key, index) in {name: 'Max', age: 31, occupation: 'CS related something'}"> {{index}} - {{key}}: {{value}} </li>
-      </ul>
-
-      <ul>
-        <li v-for="num in 10"> {{num}} </li>
+        <li v-for="(goal, index) in goals" @click="removeItem(index)">{{index + 1}}: {{goal}}</li>
       </ul>
     </section>
   </body>
