@@ -1,3 +1,4 @@
+
 const app = Vue.createApp({
   data() {
     return {
@@ -6,8 +7,12 @@ const app = Vue.createApp({
     };
   },
   methods: {
-    addGoal() {
-      this.goals.push(this.enteredGoalValue);
+    addGoal(event) {
+      console.log(event.target.id)
+      if (this.enteredGoalValue !== '') {
+        this.goals.push(this.enteredGoalValue);
+      }
+      this.enteredGoalValue = ''
     }
   }
 });
