@@ -26,7 +26,11 @@
       </ul>
 
       <ul>
-        <li v-for="(value, key) in {name: 'Max', age: 31, occupation: 'CS related something'}"> {{key}}: {{value}} </li>
+        <li v-for="(value, key, index) in {name: 'Max', age: 31, occupation: 'CS related something'}"> {{index}} - {{key}}: {{value}} </li>
+      </ul>
+
+      <ul>
+        <li v-for="num in 10"> {{num}} </li>
       </ul>
     </section>
   </body>
