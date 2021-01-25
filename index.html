@@ -24,6 +24,10 @@
       <ul v-else>
         <li v-for="(goal, index) in goals">{{index + 1}}: {{goal}}</li>
       </ul>
+
+      <ul>
+        <li v-for="(value, key) in {name: 'Max', age: 31, occupation: 'CS related something'}"> {{key}}: {{value}} </li>
+      </ul>
     </section>
   </body>
 </html>
