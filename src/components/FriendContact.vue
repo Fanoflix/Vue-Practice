@@ -1,8 +1,8 @@
 <template>
   <li>
-    <h2>{{ name }} {{ isFavourite == '1' ? '(Favourite)' : '' }}</h2>
+    <h2>{{ name }} {{ friendIsFavourite == '1' ? '(Favourite)' : '' }}</h2>
+    <button @click="toggleFavourite"> \/</button>
     <button @click="toggleDetails">
-    <button @click="toggleFavourite">
       {{ detailsVisibility ? "Hide" : "Show" }} Details
     </button>
     <ul v-if="detailsVisibility">
@@ -28,19 +28,20 @@ export default {
         number: "11123213",
         email: "fictional@gm.com",
       },
+      friendIsFavourite: this.isFavourite,
     };
   },
   methods: {
     toggleDetails() {
       this.detailsVisibility = !this.detailsVisibility;
     },
-    // toggleFavourite() { // ~~~~~~~~!! THIS WILL NOT WORK !!~~~~~~~~~
-    //     if (this.isFavourite == '1') {
-    //         this.isFavourite = 0;   
-    //     } else {
-    //         this.isFavourite = 1;
-    //     }
-    // }
+    toggleFavourite() { // ~~~~~~~~!! THIS WILL NOT WORK !!~~~~~~~~~
+        if (this.friendIsFavourite == '1') {
+            this.friendIsFavourite = '0';   
+        } else {
+            this.friendIsFavourite = '1';
+        }
+    }
   },
 };
 </script>
