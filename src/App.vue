@@ -75,17 +75,19 @@ export default {
       this.friends.push(newFriendContact)
     },
     deleteFriend(friendID) {
-      // The .filter() below, is a vanilla javascript function that returns a new array based on the array on which you're calling it, except for the elements which you want to filter out. So when it returns true, the element is added to the new array, and if it returns false then the element is not added. We then assign the resultant array to this.friends.
-      this.friends = this.friends.filter( 
-        (friend) => { 
-          if (friend.id !== friendID) {
-            return true;
-          } else {
-            return false;
-          }
-      });
+
+      // this.friends = this.friends.filter( 
+      //   (friend) => { 
+      //     if (friend.id !== friendID) {
+      //       return true;
+      //     } else {
+      //       return false;
+      //     }
+
+      // 2nd Method
+      this.friends = this.friends.filter( friend => friend.id !== friendID)
+      }
     }
-  },
 };
 </script>
 
