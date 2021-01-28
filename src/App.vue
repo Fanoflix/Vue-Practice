@@ -6,11 +6,13 @@
         name="Ammar Nasir"
         phone-number="0132 1231 123"
         email-address="some1@some.com"
+        is-favourite="1"
       ></friend-contact>
       <friend-contact
         name="Some2 Some2"
         phone-number="0213132 1231 123"
         email-address="some2@some.com"
+        is-favourite="0"
       ></friend-contact>
     </ul>
   </section>
