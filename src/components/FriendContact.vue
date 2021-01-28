@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ name }} {{ friendIsFavourite == '1' ? '(Favourite)' : '' }}</h2>
+    <h2>{{ name }} {{ friendIsFavourite == true ? '(Favourite)' : '' }}</h2>
     <button @click="toggleFavourite"> \/</button>
     <button @click="toggleDetails">
       {{ detailsVisibility ? "Hide" : "Show" }} Details
@@ -47,11 +47,6 @@ export default {
   data() {
     return {
       detailsVisibility: false,
-      friend: {
-        name: "Ammar",
-        number: "11123213",
-        email: "fictional@gm.com",
-      },
       friendIsFavourite: this.isFavourite,
     };
   },
@@ -60,11 +55,8 @@ export default {
       this.detailsVisibility = !this.detailsVisibility;
     },
     toggleFavourite() {
-        if (this.friendIsFavourite == '1') {
-            this.friendIsFavourite = '0';   
-        } else if (this.friendIsFavourite == '0') {
-            this.friendIsFavourite = '1';
-        }
+        this.$emit('toggle-favourite'); // Use kebab-case for (1)sending props and (2)events, and camelCase for (3)receiviing props
+        // We can now listen to this custom event in the App.vue file, using v-on: or @togglee-favourite="<Any javascript code here>"
     }
   },
 };
