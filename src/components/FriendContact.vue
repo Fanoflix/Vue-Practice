@@ -10,6 +10,9 @@
       <li><strong>Email: </strong> {{ emailAddress }}</li>
     </ul>
   </li>
+  <button @click="$emit('delete-friend', id)">
+      Delete
+  </button>
 </template>
 
 <script>
@@ -58,11 +61,11 @@ export default {
       this.detailsVisibility = !this.detailsVisibility;
     },
     toggleFavourite() {
-        this.$emit('toggle-favourite', this.id); // Use kebab-case for (1)sending props and (2)events, and camelCase for (3)receiviing props
-        // We can now listen to this custom event in the App.vue file, using v-on: or @togglee-favourite="<Any javascript code here>"
-        // The first argument in the this.$emit() function is the custom event name, the rest are the extra data that we can/want to send.
-        // this.id is avaiable to us because Remember: Props can be used as data properties using this.propname but they cannot be assigned values.
-    }
+        this.$emit('toggle-favourite', this.id);
+    },
+    // deleteFriend() {
+    //     this.$emit('delete-friend') // If all we're doing in a function is emitting. Then we can just use emit on the tag itself where we added the eventListener
+    // }
   },
 };
 </script>

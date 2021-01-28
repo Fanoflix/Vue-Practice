@@ -17,6 +17,7 @@
         :email-address="friend.email"
         :is-favourite="friend.isFavourite"
         @toggle-favourite="toggleFavouriteStatus"
+        @delete-friend="deleteFriend"
       ></friend-contact>
     </ul>
   </section>
@@ -25,6 +26,8 @@
 <script>
 import FriendContact from "./components/FriendContact.vue";
 import NewFriend from './components/NewFriend.vue';
+
+
 export default {
   components: { FriendContact, NewFriend },
   data() {
@@ -70,6 +73,17 @@ export default {
         isFavourite: false
       }
       this.friends.push(newFriendContact)
+    },
+    deleteFriend(friendID) {
+      // The .filter() below, is a vanilla javascript function that returns a new array based on the array on which you're calling it, except for the elements which you want to filter out. So when it returns true, the element is added to the new array, and if it returns false then the element is not added. We then assign the resultant array to this.friends.
+      this.friends = this.friends.filter( 
+        (friend) => { 
+          if (friend.id !== friendID) {
+            return true;
+          } else {
+            return false;
+          }
+      });
     }
   },
 };

@@ -1,15 +1,15 @@
 <template>
     <form @submit.prevent="submitData">
         <div>
-            <label >Name</label>
+            <label>Name</label>
             <input type="text" v-model="enteredName">
         </div>
         <div>
-            <label for="">Phone</label>
+            <label>Phone</label>
             <input type="tel"  v-model="enteredPhone">
         </div>
         <div>
-            <label for="">E-mail</label>
+            <label>E-mail</label>
             <input type="email"  v-model="enteredEmail">
         </div>
         <div>
