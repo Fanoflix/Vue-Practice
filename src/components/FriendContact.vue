@@ -37,6 +37,17 @@ export default {
             default: false,
         },
     },
+    // emits: ['toggle-favourite'], // in this method, you define that there at one point this component emits an event name 'toggle-favourite'. 2nd method/detailed method is below:
+    emits: {
+        'toggle-favourite': (id) => { // you put the name of the event as a key, and the value is a function that defines what to do. The parameters of the function are the data items we expect to send with the emit. In this case, the id (we sent it using this.id)
+            if (id) {
+                return true;
+            } else {
+                console.warn('id is missing')
+                return false;
+            }
+        }
+    },
   data() { 
     return {
       detailsVisibility: false,
