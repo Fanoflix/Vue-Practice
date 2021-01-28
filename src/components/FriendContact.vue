@@ -1,7 +1,7 @@
 <template>
   <li>
-    <h2>{{ name }} {{ friendIsFavourite == true ? '(Favourite)' : '' }}</h2>
-    <button @click="toggleFavourite"> \/</button>
+    <h2>{{ name }} {{ isFavourite ? '(Favourite)' : '' }}</h2>
+    <button @click="toggleFavourite"> +</button>
     <button @click="toggleDetails">
       {{ detailsVisibility ? "Hide" : "Show" }} Details
     </button>
@@ -14,17 +14,14 @@
 
 <script>
 export default {
-    // props: [
-    //     'name',
-    //     'phoneNumber',
-    //     'emailAddress',
-    //     'isFavourite',
-    // ],
     props: {
-        //name: String, // We can just specify the type of the prop we expect or we could add extra details, like below:
+        id: {
+            type: String,
+            required: true
+        },
         name: {
-            type: String, // this prop should be of type string
-            required: true // it is required to be sent from App.vue (helps in development)
+            type: String,
+            required: true
         },
         phoneNumber: {
             type: String,
@@ -36,27 +33,24 @@ export default {
         },
         isFavourite: {
             type: Boolean,
-            required: false, // This prop is not required
-            default: false, // The default value if this prop is not provided,
-            // the default config
-            validator: (value) => { // the 'value' here is the value of the prop, just so we can use that in the function.
-                return value === '1' || value === '0'; // Just making sure that isFavourite is either a 1 or a 0
-            }
+            required: false,
+            default: false,
         },
     },
-  data() {
+  data() { 
     return {
       detailsVisibility: false,
-      friendIsFavourite: this.isFavourite,
     };
   },
-  methods: {
+  methods: { 
     toggleDetails() {
       this.detailsVisibility = !this.detailsVisibility;
     },
     toggleFavourite() {
-        this.$emit('toggle-favourite'); // Use kebab-case for (1)sending props and (2)events, and camelCase for (3)receiviing props
+        this.$emit('toggle-favourite', this.id); // Use kebab-case for (1)sending props and (2)events, and camelCase for (3)receiviing props
         // We can now listen to this custom event in the App.vue file, using v-on: or @togglee-favourite="<Any javascript code here>"
+        // The first argument in the this.$emit() function is the custom event name, the rest are the extra data that we can/want to send.
+        // this.id is avaiable to us because Remember: Props can be used as data properties using this.propname but they cannot be assigned values.
     }
   },
 };
