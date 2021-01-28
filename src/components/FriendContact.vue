@@ -14,12 +14,36 @@
 
 <script>
 export default {
-    props: [
-        'name',
-        'phoneNumber',
-        'emailAddress',
-        'isFavourite'
-    ],
+    // props: [
+    //     'name',
+    //     'phoneNumber',
+    //     'emailAddress',
+    //     'isFavourite',
+    // ],
+    props: {
+        //name: String, // We can just specify the type of the prop we expect or we could add extra details, like below:
+        name: {
+            type: String, // this prop should be of type string
+            required: true // it is required to be sent from App.vue (helps in development)
+        },
+        phoneNumber: {
+            type: String,
+            required: true
+        },
+        emailAddress: {
+            type: String,
+            required: true
+        },
+        isFavourite: {
+            type: Boolean,
+            required: false, // This prop is not required
+            default: false, // The default value if this prop is not provided,
+            // the default config
+            validator: (value) => { // the 'value' here is the value of the prop, just so we can use that in the function.
+                return value === '1' || value === '0'; // Just making sure that isFavourite is either a 1 or a 0
+            }
+        },
+    },
   data() {
     return {
       detailsVisibility: false,
@@ -35,10 +59,10 @@ export default {
     toggleDetails() {
       this.detailsVisibility = !this.detailsVisibility;
     },
-    toggleFavourite() { // ~~~~~~~~!! THIS WILL NOT WORK !!~~~~~~~~~
+    toggleFavourite() {
         if (this.friendIsFavourite == '1') {
             this.friendIsFavourite = '0';   
-        } else {
+        } else if (this.friendIsFavourite == '0') {
             this.friendIsFavourite = '1';
         }
     }

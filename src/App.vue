@@ -3,16 +3,12 @@
     <header><h1>My friends</h1></header>
     <ul>
       <friend-contact
-        name="Ammar Nasir"
-        phone-number="0132 1231 123"
-        email-address="some1@some.com"
-        is-favourite="1"
-      ></friend-contact>
-      <friend-contact
-        name="Some2 Some2"
-        phone-number="0213132 1231 123"
-        email-address="some2@some.com"
-        is-favourite="0"
+        v-for="friend in friends"
+        :key="friend.id"
+        :name="friend.name"
+        :phone-number="friend.number"
+        :email-address="friend.email"
+        :is-favourite="true" 
       ></friend-contact>
     </ul>
   </section>
@@ -26,14 +22,21 @@ export default {
     return {
       friends: [
         {
-          id: "Ammar",
+          id: "A",
+          name: "Ammar",
           number: "11123213",
           email: "fictional@gm.com",
         },
         {
-          id: "test",
+          id: "B",
+          name: "Some2",
           number: "asd",
           email: "haha@gm.com",
+        },{
+          id: "C",
+          name: "Some3",
+          number: "asdasd",
+          email: "hahaga@gm.com",
         },
       ],
     };
