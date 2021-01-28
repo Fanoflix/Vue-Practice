@@ -1,5 +1,5 @@
-# Vue Practice
- As the name suggests. This is a scrap project for practicing vue. 
+# Vue Fundamentals
+ Jotting down core features of Vue in the form of commits. Can be used for revision or learning.
 
 ##### Why make a Github Repository for this?
- To make notes for every (most) step(s). Who knows this might come in handy 
+ Mostly just for me, as I wanted all Vue core features and concepts in one place. So that whenever I revisit Vue after taking a break for whatever reason I would be able to refresh it all.
