@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  props: ['topics'],
+  inject: ['topics'], // using inject: instead of props:. You can only inject in child components (lower level component) We 
   emits: ['select-topic']
 };
 </script>
