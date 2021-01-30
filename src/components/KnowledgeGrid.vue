@@ -6,7 +6,6 @@
       :id="topic.id"
       :topic-name="topic.title"
       :description="topic.description"
-      @select-topic="$emit('select-topic', $event)"
     ></knowledge-element>
   </ul>
 </template>
@@ -14,6 +13,5 @@
 <script>
 export default {
   inject: ['topics'], // using inject: instead of props:. You can only inject in child components (lower level component) We 
-  emits: ['select-topic']
 };
 </script>

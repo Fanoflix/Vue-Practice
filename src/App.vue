@@ -4,7 +4,7 @@
       :topic-title="activeTopic && activeTopic.title"
       :text="activeTopic && activeTopic.fullText"
     ></active-element>
-    <knowledge-base @select-topic="activateTopic"></knowledge-base>
+    <knowledge-base ></knowledge-base>
   </div>
 </template>
 
@@ -32,9 +32,10 @@ export default {
       activeTopic: null,
     };
   },
-  provide() { // Converting the provide option from an object to a function which returns the object.
+  provide() {
     return {
-      topics: this.topics
+      topics: this.topics,
+      selectTopic: this.activateTopic // Just pointing to this method (not executing it, hence the missing parantheses) The function is below. We're listening for selectTopic in KnowlegdeElement.vue
     };
   },
   methods: {
