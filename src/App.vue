@@ -11,7 +11,12 @@
 </template>
 
 <script>
+import TheHeader from './components/TheHeader.vue'; // Registering Locally
+
 export default {
+  components: { // Registering Locally
+    'the-header': TheHeader // key is the custom tag that we want, and the value is what we imported.
+  },
   data() {
     return {
       activeUser: {
