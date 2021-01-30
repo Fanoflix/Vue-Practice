@@ -1,4 +1,3 @@
-@@ -1,24 +0,0 @@
 # Vue Fundamentals
  Jotting down core features of Vue in the form of commits. Can be used for revision or learning.
 
