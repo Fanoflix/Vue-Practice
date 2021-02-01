@@ -1,14 +1,19 @@
 <template>
   <section>
-    <h2>Available Badges</h2>
-    <ul>
-      <li>
-        <base-badge type="admin" caption="ADMIN"></base-badge>
-      </li>
-      <li>
-        <base-badge type="author" caption="AUTHOR"></base-badge>
-      </li>
-    </ul>
+    <base-card>
+      <template v-slot:header>
+        <h2>Available Badges</h2>
+      </template>
+
+      <ul>
+        <li>
+          <base-badge type="admin" caption="ADMIN"></base-badge>
+        </li>
+        <li>
+          <base-badge type="author" caption="AUTHOR"></base-badge>
+        </li>
+      </ul>
+    </base-card>
   </section>
 </template>
 
@@ -23,14 +28,6 @@ ul {
   padding: 0;
   display: flex;
   flex-direction: row;
-}
-
-section {
-  margin: 2rem auto;
-  max-width: 30rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  padding: 1rem;
 }
 
 li {
