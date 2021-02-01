@@ -3,14 +3,10 @@
     <the-header></the-header>
     <button @click="setSelectedComponent('active-goals')">Active Goals</button>
     <button @click="setSelectedComponent('manage-goals')">Manage Goals</button>
-    <!-- <active-goals v-if="selectedComponent === 'active-goals'"></active-goals>
-    <manage-goals v-if="selectedComponent === 'manage-goals'"></manage-goals> -->
 
-    <!-- The above method of rendering components according to certain condition is repititive, and may not be feasible for multiple componnets -->
-    <!-- Therefore we use Dynamic Components -->
-
-    <component :is="selectedComponent"></component> <!-- binding the is property. -->
-    <!-- Same behaviour as above and way less code to right. -->
+    <keep-alive>
+    <component :is="selectedComponent"></component> 
+    </keep-alive>
   </div>
 </template>
 
