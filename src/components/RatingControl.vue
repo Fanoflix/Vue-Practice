@@ -29,6 +29,17 @@ export default {
   }
   // The names "modelValue" for the prop, and "update:modelValue" for the emitted event, MUST NOT be changed. They are introduced in Vue3 and were previously something else.
 };
+
+
+/* ++++ https://v3.vuejs.org/guide/component-custom-events.html#v-model-arguments +++  
+
+If you don't like to use the default names "modelValue" and "update:modelValue" you can instead use your custom ones by:
+
+1) use v-model:customName="whataver"
+2) Now, the child component will expect a "customName" prop and "update:customName" event.
+3*) We can now create multiple v-model bindings on a single component. POWER OVERWHELMING!
+
+*/
 </script>
 
 <style scoped>
