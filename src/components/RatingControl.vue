@@ -1,26 +1,17 @@
 <template>
   <ul>
-    <li :class="{ active: activeOptions === 'poor' }"> 
-      <button
-        type="button"
-        @click="activate('poor')"
-      >
+    <li :class="{ active: modelValue === 'poor' }">
+      <button type="button" @click="activate('poor')">
         Poor
       </button>
     </li>
-    <li :class="{ active: activeOptions === 'average' }">
-      <button
-        type="button"
-        @click="activate('average')"
-      >
+    <li :class="{ active: modelValue === 'average' }">
+      <button type="button" @click="activate('average')">
         Average
       </button>
     </li>
-    <li :class="{ active: activeOptions === 'great' }">
-      <button
-        type="button"
-        @click="activate('great')"
-      >
+    <li :class="{ active: modelValue === 'great' }">
+      <button type="button" @click="activate('great')">
         Great
       </button>
     </li>
@@ -29,26 +20,24 @@
 
 <script>
 export default {
-  data() {
-    return {
-      activeOptions: null
-    };
-  },
+  props: ['modelValue'], // This component receives 'rating' as prop into 'modelValue'
+  emits: ['update:modelValue'], // And you MUST emit 'update:modelValue' to send back the data that whatever changes that occured. This is the complete ritual to make v-model work with custom components. Emitting below::
   methods: {
     activate(option) {
-      this.activeOptions = option;
+      this.$emit('update:modelValue', option); // emitting here
     }
   }
+  // The names "modelValue" for the prop, and "update:modelValue" for the emitted event, MUST NOT be changed. They are introduced in Vue3 and were previously something else.
 };
 </script>
 
 <style scoped>
 .active {
-  border-color: purple;
+  border-color: red;
 }
 
 .active button {
-  color: purple;
+  color: red;
 }
 
 ul {
