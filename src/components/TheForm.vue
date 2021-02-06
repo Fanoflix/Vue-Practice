@@ -46,6 +46,11 @@
         <input id="how-other" name="how" type="radio" value="others" v-model="how"/>
         <label for="how-other">Other</label>
       </div>
+
+      <div class="form-control">
+        <rating-control></rating-control>
+      </div>
+
       <div class="form-control">
         <input type="checkbox" id="confirm-tems" name="confirm-terms" v-model="confirm"/>
         <label for="confirm-terms">AGree to terms of use!</label>
@@ -58,7 +63,11 @@
 </template>
 
 <script> // v-model works on <select> element just like it does on the <input> element 
+import RatingControl from './RatingControl.vue';
 export default {
+  components: {
+    RatingControl
+  },
   data() {
     return {
       userName: '',
