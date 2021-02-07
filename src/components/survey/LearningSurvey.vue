@@ -46,7 +46,7 @@ export default {
       invalidInput: false,
     };
   },
-  emits: ['survey-submit'],
+  // emits: ['survey-submit'],
   methods: {
     submitSurvey() {
       if (this.enteredName === '' || !this.chosenRating) {
@@ -55,10 +55,21 @@ export default {
       }
       this.invalidInput = false;
 
-      this.$emit('survey-submit', {
-        userName: this.enteredName,
-        rating: this.chosenRating,
+      fetch('https://vue-http-demo-449f9-default-rtdb.firebaseio.com/surveys.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json' // Telling the server that we'll add some data to this request, whhich will be in the JSON format. 
+        },
+        body: JSON.stringify({ // body is the data we wanna add. It should be in JSON format, so for that, we make a javascript object and call the JSON.stringify({}) on it.
+          name: this.enteredName,
+          rating: this.chosenRating
+        })
       });
+
+      // this.$emit('survey-submit', { // (1) WE NO LONGER NEED TO EMIT OUR DATA HERE
+      //   userName: this.enteredName,
+      //   rating: this.chosenRating,
+      // });
 
       this.enteredName = '';
       this.chosenRating = null;
