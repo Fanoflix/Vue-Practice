@@ -7,7 +7,8 @@
           >Load Submitted Experiences</base-button
         >
       </div>
-      <ul>
+      <p v-if="isLoading">Loading...</p>
+      <ul v-else>
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -28,27 +29,22 @@ export default {
   },
   data() {
     return {
-      results: []
+      results: [],
+      isLoading: false
     };
   },
   methods: {
     loadExperiences() {
-      fetch(
-        'https://vue-http-demo-449f9-default-rtdb.firebaseio.com/surveys.json'
-      )
+      this.isLoading = true;
+      fetch('https://vue-http-demo-449f9-default-rtdb.firebaseio.com/surveys.json')
         .then(response => {
           if (response.ok) {
-            // response has an ok property which indicates that the request was successful or not. If its ok, then we can work on the data:
-            // response has various methods for that;
-            // (1) .json() which will parse the data thats part of the response if its in JSON format.
             return response.json();
           }
         })
         .then(data => {
-          // Another then() method after that first then(). This one will be trigerred when this return promise is done. The argument this then() receives is the data that the response.json yielded. Kind of common sense.
-          // console.log(data); // This logged the data from our database over at google 9.9 Now we just need to add it to the results[] array.
+          this.isLoading = false; // Its crucial to release it here, because remember, JS doesnt wait for fetch to finish, its just the code in the then() methods that executes at a later time. So we need to do this here.
 
-          // We cant add an object directly to an array, so we need to do this: 
           const results = [];
           for (const id in data) {
             results.push({
@@ -58,11 +54,11 @@ export default {
             });
           }
 
-          this.results = results; // setting the Vue "results" variable equal to our temporary results variable from line 52. For this line to work, you have to make sure to use Arrow functions, rather than the function() {} syntax. BECAUSE, if you use the normal function() syntax, the meaning of the "this." keyword changes. If you use arrow functions on the other hand,  "this." means the same thing inside as outside of the function.
+          this.results = results; 
         });
     }
   },
-  mounted() { // Remember this ? This is the mounted hook from the Vue Instance Life cycle. We can call the loadExperiences() method whenever the component is mounted! NOTE: the mounted() hook here refers too this exact component, so its ultra useful!
+  mounted() {
     this.loadExperiences();
   }
 };
