@@ -29,6 +29,7 @@
         <p
           v-if="invalidInput"
         >One or more input fields are invalid. Please check your provided data.</p>
+        <p style="font-weight: bold; color: red" v-if="error"> {{error}} </p>
         <div>
           <base-button>Submit</base-button>
         </div>
@@ -44,9 +45,9 @@ export default {
       enteredName: '',
       chosenRating: null,
       invalidInput: false,
+      error: null,
     };
   },
-  // emits: ['survey-submit'],
   methods: {
     submitSurvey() {
       if (this.enteredName === '' || !this.chosenRating) {
@@ -55,15 +56,25 @@ export default {
       }
       this.invalidInput = false;
 
-      fetch('https://vue-http-demo-449f9-default-rtdb.firebaseio.com/surveys.json', {
+      fetch('https://vue-http-demo-449f9-default-rtdb.firebaseio.com/surveys.json', { // Error # 1, remove '.json'
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
+        body: JSON.stringify({ // Error # 2, remove "JSON.strngify":  Thiss will return an error with a status code of 400 (check in console)
           name: this.enteredName,
           rating: this.chosenRating
         })
+      }).then( response => { // To handle errors of kind Error # 2, we need to use then, which is alawys triggered, and then check if it returned a bad status code (400s or 500s mean somethin went wrong)
+        if (response.ok) {
+          // do something ...
+        } else {
+          throw new Error('Could not save data!') // This throws a new error, and then automatically reaches the end block below.
+        }
+      }).catch(error => {
+        console.log(error);
+        // this.error = 'Something went wrong, try again later!'; // -- OR ---
+        this.error = error.message // Note: the .message property is present in the "new Error() constructor creates such an object which has a message key."
       });
 
       this.enteredName = '';
