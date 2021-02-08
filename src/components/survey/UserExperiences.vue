@@ -61,6 +61,9 @@ export default {
           this.results = results; // setting the Vue "results" variable equal to our temporary results variable from line 52. For this line to work, you have to make sure to use Arrow functions, rather than the function() {} syntax. BECAUSE, if you use the normal function() syntax, the meaning of the "this." keyword changes. If you use arrow functions on the other hand,  "this." means the same thing inside as outside of the function.
         });
     }
+  },
+  mounted() { // Remember this ? This is the mounted hook from the Vue Instance Life cycle. We can call the loadExperiences() method whenever the component is mounted! NOTE: the mounted() hook here refers too this exact component, so its ultra useful!
+    this.loadExperiences();
   }
 };
 </script>
