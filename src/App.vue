@@ -1,20 +1,24 @@
 <template>
   <the-navigation @set-page="setActivePage"></the-navigation>
   <main>
-    <component :is="activePage"></component>
+    <!-- <component :is="activePage"></component> --> <!-- We need to use a special component to let the vue router know where to render it. So we won't use this anymore-->
+    <router-view></router-view>
+
   </main>
 </template>
 
 <script>
-import TeamsList from './components/teams/TeamsList.vue';
-import UsersList from './components/users/UsersList.vue';
+// No need to import these \/
+// import TeamsList from './components/teams/TeamsList.vue';
+// import UsersList from './components/users/UsersList.vue'; 
 import TheNavigation from './components/nav/TheNavigation.vue';
 
 export default {
   components: {
     TheNavigation,
-    TeamsList,
-    UsersList,
+    // We dont needd to import or register these components now. Because we dont need to do that, we're not using these components in our template by using their selector, instead we select them through the router in main.js
+    // TeamsList, 
+    // UsersList,
   },
   data() {
     return {
