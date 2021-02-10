@@ -4,16 +4,11 @@
 ## How to learn from this repository?
  Simply go to the commits of this repository, and search for the topic you wish to revise. Read the descriptions of the commits, and the comments in the code for a better understanding.
 
-### 
-```diff
--________________________________________________________ 
+``` diff 
++  Why make a Github Repository for this? 
 ```
-##### Why make a Github Repository for this?
 ###### Mostly just for me, as I wanted all Vue core features and concepts in one place. So that whenever I revisit Vue after taking a break for whatever reason I would be able to refresh it all.
-
-```diff
-- ________________________________________________________
-```
+_____________________________________________
 
 ## Project setup
 ```
