@@ -1,4 +1,5 @@
 <template>
+<button @click="confirmInput">Confirm</button>
   <ul>
     <user-item v-for="user in users" :key="user.id" :name="user.fullName" :role="user.role"></user-item>
   </ul>
@@ -12,6 +13,18 @@ export default {
     UserItem,
   },
   inject: ['users'],
+  methods: {
+    confirmInput() {
+      // do something (its a dummy example)
+      // . . .
+      // . . .
+      // 
+      // Since we are using the vue-router, we have a special property available, this.$router('/path'):
+      this.$router.push('/teams'); // Addind a new route to this routing memory the browser keeps. We'll be now redirected programaticalyl to /teams.
+      // this.$router.back()
+      // this.$router.forward()
+    } 
+  },
 };
 </script>
 
