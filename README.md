@@ -1,5 +1,8 @@
 # Vue Fundamentals
  Jotting down core features of Vue in the form of commits. Can be used for revision or learning.
+ 
+## How to learn from this repository?
+ Simply go to the commits of this repository, and search for the topic you wish to revise. Read the descriptions of the commits, and the comments in the code for a better understanding.
 
 ### ___________________________________________
 ##### Why make a Github Repository for this?
