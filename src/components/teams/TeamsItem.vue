@@ -2,13 +2,23 @@
   <li>
     <h3>{{ name }}</h3>
     <div class="team-members">{{ memberCount }} Members</div>
-    <a href="#">View Members</a>
+    <!-- <a href="#">View Members</a>  -->
+    <!-- Going to replace this anchor tag with <router-link> So that we can dynamicallly pass teamID to the URl-->
+
+    <router-link :to="'/teams/' + id" >View Members</router-link>
+    <router-link :to="teamMembersLink">View Members</router-link>
+    <!-- Both of the above lines work the same. -->
   </li>
 </template>
 
 <script>
 export default {
-  props: ['name', 'memberCount'],
+  props: ['id', 'name', 'memberCount'],
+  computed: {
+    teamMembersLink() {
+      return '/teams/' + this.id;
+    }
+  }
 };
 </script>
 
@@ -35,6 +45,7 @@ a {
   display: inline-block;
   padding: 0.5rem 1.5rem;
   background-color: #11005c;
+  margin-left: 2px;
 }
 
 a:hover,
