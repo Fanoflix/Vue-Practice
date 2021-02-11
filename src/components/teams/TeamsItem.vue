@@ -13,11 +13,11 @@ export default {
   props: ['id', 'name', 'memberCount'],
   computed: {
     teamMembersLink() {
-      // return '/teams/' + this.id;
       return {
-        // path: '/teams' + this.id //We can set the path proerty in this object.
-        name: 'team-members', params: {teamID: this.id} // instead we can use the name property we defined in main.js. We also have to set the params option. This is all done to make defining routed less cumbersome in huge apps.
-      }
+        name: 'team-members',
+        params: { teamID: this.id },
+        query: {sort: 'asc'}, // Add any query parameters that you want to pass. These query aprams are not defined in the router. We can now extract this in the TeamMembers Component.
+      };
     }
   }
 };
