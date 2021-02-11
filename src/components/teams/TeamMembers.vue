@@ -18,6 +18,7 @@ import UserItem from '../users/UserItem.vue';
 
 export default {
   inject: ['users', 'teams'],
+  props: ['teamID'],
   components: {
     UserItem
   },
@@ -28,14 +29,8 @@ export default {
     };
   },
   methods: {
-    loadTeamMembers(route) {
-      
-      console.log(this.$route);
-      // const teamID = this.$route.params.teamID;
-      const teamID = route.params.teamID;
+    loadTeamMembers(teamID) {
 
-      // Note: each team, just has a bunch of userIDs
-      // { id: 't1', name: 'Frontend Engineers', members: ['u1', 'u2'] },
       const selectedTeam = this.teams.find(team => team.id === teamID);
       const members = selectedTeam.members;
       const selectedMembers = [];
@@ -48,13 +43,12 @@ export default {
     }
   },
   created() {
-    this.loadTeamMembers(this.$route);
+    // this.loadTeamMembers(this.$route);
+    this.loadTeamMembers(this.teamID);
   },
   watch: {
-    // Whenever the URL changes, one important thing changes, the $route changes. It holds the latest information about the laoded route. So this $route will always hold the latest parameter for example.
-    // So we can watch for it: 
-    $route(newRoute) {
-      this.loadTeamMembers(newRoute); // Recall: watchers receive the new value as the first argument, and the old value as the 2nd argument.
+    teamID(newiID) {
+      this.loadTeamMembers(newiID);
     }
   }
 };

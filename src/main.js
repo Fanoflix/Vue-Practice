@@ -11,10 +11,9 @@ const router = createRouter({
   routes: [
     { path: '/users', component: UsersList },
     { path: '/teams', component: TeamsList },
-    // { path: '/teams/new' }, // if we had another /teams/something path, then we'll have to put it above the dynamic path, so.. above the route below.
-    { path: '/teams/:teamID', component: TeamMembers} // We can make dynamic routes, by using the colon : to set  
+    // { path: '/teams/new' },
+    { path: '/teams/:teamID', component: TeamMembers, props:true} // props: true tells the vue-router, that the dynamic param should be passed into this component as props, rather than just on the $route property. So now: teamID here, is the prop. And you can just use the props: [] property in the script tag of the component itself. So this is always the better way.
   ],
-  // We can provide additional configuration to our createRouter relating to the classes that are added to the active <router-link> element. These are the linkActiveClass and linkExactActiveClass as the key, and the value should be a string which you instead need to use as the CSS class name.
   linkActiveClass: 'active',
   linkExactActiveClass: 'exactActive',
 });
