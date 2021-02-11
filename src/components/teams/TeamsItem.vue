@@ -2,10 +2,7 @@
   <li>
     <h3>{{ name }}</h3>
     <div class="team-members">{{ memberCount }} Members</div>
-    <!-- <a href="#">View Members</a>  -->
-    <!-- Going to replace this anchor tag with <router-link> So that we can dynamicallly pass teamID to the URl-->
 
-    <router-link :to="'/teams/' + id" >View Members</router-link>
     <router-link :to="teamMembersLink">View Members</router-link>
     <!-- Both of the above lines work the same. -->
   </li>
@@ -16,7 +13,11 @@ export default {
   props: ['id', 'name', 'memberCount'],
   computed: {
     teamMembersLink() {
-      return '/teams/' + this.id;
+      // return '/teams/' + this.id;
+      return {
+        // path: '/teams' + this.id //We can set the path proerty in this object.
+        name: 'team-members', params: {teamID: this.id} // instead we can use the name property we defined in main.js. We also have to set the params option. This is all done to make defining routed less cumbersome in huge apps.
+      }
     }
   }
 };
