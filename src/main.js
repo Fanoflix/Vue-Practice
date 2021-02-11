@@ -12,9 +12,12 @@ const router = createRouter({
   routes: [
     { path: '/', redirect: '/teams' },
     { path: '/users', component: UsersList },
-    { path: '/teams', component: TeamsList },
+    // All these routes were siblings to each other. We can setup nested routes, by adding a children option on the route config. children takes an array, and it takes an array of routes.
+    { path: '/teams', component: TeamsList, children: [
+      { path: ':teamID', component: TeamMembers, props:true}, // Here we don't need to repeat the entire path, we can just set the part after the /teams/
+    ] },
     // { path: '/teams/new' },
-    { path: '/teams/:teamID', component: TeamMembers, props:true},
+    // { path: '/teams/:teamID', component: TeamMembers, props:true}, // We can now move this route and move it in the children of teams.
     { path: '/:notFound(.*)', component: NotFound }
   ],
   linkActiveClass: 'active',

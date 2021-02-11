@@ -1,4 +1,6 @@
 <template>
+  <!-- After adding the children option in the main.js, and adding the route /teams/:teamID as a path to it; Vue now no longer knows where to load the TeamMembers Component. So we need to add another router-vue in the TeamsList component. Why the TeamsList component? Because this component is the father! (refer to main.js) -->
+  <router-view></router-view>
   <ul>
     <teams-item
       v-for="team in teams"
@@ -15,9 +17,9 @@ import TeamsItem from './TeamsItem.vue';
 
 export default {
   components: {
-    TeamsItem,
+    TeamsItem
   },
-  inject: ['teams'],
+  inject: ['teams']
 };
 </script>
 

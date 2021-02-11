@@ -1,9 +1,7 @@
 <template>
   <the-navigation></the-navigation>
   <main>
-    <!-- <component :is="activePage"></component> --> <!-- We need to use a special component to let the vue router know where to render it. So we won't use this anymore-->
     <router-view></router-view>
-
   </main>
 </template>
 
