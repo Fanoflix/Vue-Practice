@@ -16,7 +16,7 @@ export default {
       return {
         name: 'team-members',
         params: { teamID: this.id },
-        query: {sort: 'asc'}, // Add any query parameters that you want to pass. These query aprams are not defined in the router. We can now extract this in the TeamMembers Component.
+        query: {sort: 'asc'},
       };
     }
   }

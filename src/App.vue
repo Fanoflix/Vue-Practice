@@ -1,8 +1,11 @@
 <template>
   <the-navigation></the-navigation>
   <main>
-    <router-view></router-view>
+    <router-view></router-view> <!-- We are allowed an unnamed router view (just like with slots) -->
   </main>
+  <footer>
+    <router-view name="footer"> </router-view>
+  </footer>
 </template>
 
 <script>
