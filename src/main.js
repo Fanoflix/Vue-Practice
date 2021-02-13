@@ -31,16 +31,29 @@ const router = createRouter({
   ],
   linkActiveClass: 'active',
   linkExactActiveClass: 'exactActive',
-  scrollBehavior(to, from, savedPosition) {
-    // Scrollbehavioru is a method, which will be called, whenever our page changes. It receives 3 arguments, to from, savedPosition
-    console.log(to, from, savedPosition); // savedPosition is the scroll position we had on the page before we went backward.
-
-    if (savedPosition) { // (2) If savePosition exists we go to that position. If savePosition is null, we jump to the top. So basically, whenever we click "back" we'll always be returned to our last savedPosition instead of aalways ending at the top (which was the behaviour when we only added (1) )
+  scrollBehavior(_, _2, savedPosition) {
+    // console.log(to, from, savedPosition);
+    if (savedPosition) {
       return savedPosition;
     }
-
-    return { left:0, top: 0} // (1) If we always return this, we will always scrolled 0 px from the top (so at the top) whenever the page changes
+    return { left: 0, top: 0 };
   }
+});
+
+// Guards are functions that are called automatically by Vue router when a page changes, or to be precise, when a navigation action started.
+router.beforeEach((to, from, next) => {
+  // beforeEach takes a function as an arugment, which will be called by the vue router, whenever we navigate from one page to another. Before Each navigation action, this function will be called. This function takes 3 self-explanatory arguments. "next" is a function we have to call to wether confirm or cancel this navigation action. This part is what makes it a 'guard'
+  console.log('Global beforeEach');
+  // next(); // If we call next() like this, we allow all navigations.
+  // next(false) // stops all navigation.
+  // We can also pass a string with a route we wanna navigate to (one of the ones we registered above) OR such a naviagtion object.
+  // if (to.name === 'team-members' ) {
+  //   next();
+  // } else {
+  //   next({name: 'team-members', params: { teamID: 't2'} }); 
+  // }
+  next();
+  
 });
 
 const app = createApp(App);
