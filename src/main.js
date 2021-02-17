@@ -57,6 +57,10 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
+router.afterEach( (to, from) => {
+  console.log('This will be the last thing we see on every navigation action');
+});
+
 const app = createApp(App);
 app.use(router);
 app.mount('#app');
