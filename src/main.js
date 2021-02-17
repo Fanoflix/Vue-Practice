@@ -28,6 +28,7 @@ const router = createRouter({
     {
       name: 'teams',
       path: '/teams',
+      meta: {needsAuth: true}, // meta holds any kind of values in it. This is useful because we can access this meta field in every place where the $route object is available. So we can use it inside components, aswell as Navigation Guards. We can now use it in line 59 of main.js to check if the user is authenticated or not.
       components: { default: TeamsList, footer: TeamsFooter },
       children: [
         {
@@ -54,6 +55,14 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   console.log('Global beforeEach');
   console.log(to, from);
+
+  // USING METADATA HERE
+  if (to.meta.needsAuth) {
+    console.log('Needs Auth!');
+  } else {
+    next();
+  }
+
   next();
 });
 
