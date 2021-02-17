@@ -58,6 +58,7 @@ router.beforeEach((to, from, next) => {
 });
 
 router.afterEach( (to, from) => {
+  console.log(to, from);
   console.log('This will be the last thing we see on every navigation action');
 });
 
