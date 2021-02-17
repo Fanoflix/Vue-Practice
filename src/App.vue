@@ -6,7 +6,7 @@
     </button>
   </div>
   <div class="container">
-    <transition>
+    <transition enter-to-class="to" enter-active-class="active" enter-from-class="from" leave-active-class="leave-active" leave-to-class="leave-to" leave-from-class="leave-from">
       <p v-if="paraIsVisible">This is only sometimes visible...</p>
     </transition>
     <button @click="toggleParagraph">Toggle Paragraph</button>
@@ -63,37 +63,33 @@ button {
   cursor: pointer;
 }
 
-/* .v-enter-from { */
-  /* Here we define our starting state while entering*/
-  /* opacity: 0;
-  transform: translateY(-30px);
-} */
-
-.v-enter-active {
-  /* */
-  /* transition: all 0.5s ease-in; */
-  animation: slide-scale 0.5s ease-out;
-}
-/* .v-enter-to { */
-  /* Here we enter the final/end state while entering */
-  /* opacity: 1;
-  transform: translateY(0);
-} */
-
-/* .v-leave-from {
-  opacity: 1;
-  transform: translateY(0); */
-/* } */
-
-.v-leave-active {
-  /* transition: all 0.5s ease-out; */
-  animation: slide-scale 0.5s ease-out reverse;
-}
-
-/* .v-leave-to {
+.from {
   opacity: 0;
   transform: translateY(-30px);
-} */
+}
+
+.active {
+  
+  transition: all 0.5s ease-in;
+}
+.to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.leave-active {
+  transition: all 0.5s ease-out;
+}
+
+.leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
 
 @keyframes slide-scale { /* If we're using keyframes, we don't need to use the -to and -from classes. */
   from {
