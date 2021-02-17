@@ -1,13 +1,19 @@
 <template>
   <div class="container">
     <div class="block"></div>
-    <button :class="{ animate: animatedBlock }">Animate</button>
+    <button :class="{ animate: animatedBlock }" @click="changeState">
+      Animate
+    </button>
+  </div>
+  <div class="container">
+    <transition>
+      <p v-if="paraIsVisible">This is only sometimes visible...</p>
+    </transition>
+    <button @click="toggleParagraph">Toggle Paragraph</button>
   </div>
   <base-modal @close="hideDialog" v-if="dialogIsVisible">
-    <transition> 
-      <!-- transition can only have one child element -->
-      <p>This is a test dialog!</p>
-    </transition>
+    <!-- transition can only have one child element -->
+    <p>This is a test dialog!</p>
     <button @click="hideDialog">Close it!</button>
   </base-modal>
   <div class="container">
@@ -20,7 +26,7 @@ export default {
   data() {
     return {
       dialogIsVisible: false,
-      animatedBlock: false
+      paraIsVisible: false
     };
   },
   methods: {
@@ -29,6 +35,9 @@ export default {
     },
     hideDialog() {
       this.dialogIsVisible = false;
+    },
+    toggleParagraph() {
+      this.paraIsVisible = !this.paraIsVisible;
     }
   }
 };
@@ -53,6 +62,50 @@ button {
   color: white;
   cursor: pointer;
 }
+
+/* .v-enter-from { */
+  /* Here we define our starting state while entering*/
+  /* opacity: 0;
+  transform: translateY(-30px);
+} */
+
+.v-enter-active {
+  /* */
+  /* transition: all 0.5s ease-in; */
+  animation: slide-scale 0.5s ease-out;
+}
+/* .v-enter-to { */
+  /* Here we enter the final/end state while entering */
+  /* opacity: 1;
+  transform: translateY(0);
+} */
+
+/* .v-leave-from {
+  opacity: 1;
+  transform: translateY(0); */
+/* } */
+
+.v-leave-active {
+  /* transition: all 0.5s ease-out; */
+  animation: slide-scale 0.5s ease-out reverse;
+}
+
+/* .v-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+} */
+
+@keyframes slide-scale { /* If we're using keyframes, we don't need to use the -to and -from classes. */
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 button:hover,
 button:active {
   background-color: #a80b48;
