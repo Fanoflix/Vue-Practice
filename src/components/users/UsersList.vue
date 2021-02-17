@@ -25,6 +25,12 @@ export default {
       // this.$router.forward()
     } 
   },
+  beforeRouteEnter(to, from, next) {
+    console.log('userslist beforeLogEnter');
+    console.log(to, from);
+    next();
+
+  }
 };
 </script>
 

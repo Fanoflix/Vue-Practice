@@ -46,6 +46,12 @@ export default {
     // this.loadTeamMembers(this.$route);
     this.loadTeamMembers(this.teamID);
   },
+  // beforeRouteUpdate(to, from, next) { // WE ALREADY HAVE THE WATCH LOGIC IN PLACE TO HANDLE THIS. SO JSUT READ THE DOCS AND THIS PIECE OF CODE TO SEE HOW THIS IS AN ALTERNATIVE TO WATCHING THE TEAMID!!
+  //   console.log('Team Members Cmp beforeRouteUpdate');
+  //   console.log(to, from);
+  //   this.loadTeamMembers(to.params.teamID);
+  //   next();
+  // },
   watch: {
     teamID(newiID) {
       this.loadTeamMembers(newiID);
