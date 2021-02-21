@@ -13,11 +13,27 @@ const store = createStore({
   },
   mutations: {
     // Here we define methods that mutate the states. Each method accepts state (to access the states above) and a payload; which can be any value or an object.
-    increment(state, payload) { // 
+    increment(state, payload) { 
       state.counter = state.counter + payload.value;
     },
     decrement(state, payload) {
       state.counter = state.counter - payload.value;
+    }
+  },
+  getters: {
+    // This is just like a computer property of a component. Each getter receives a state and a getters argument. The getters argument can be used to call other getters.
+    finalCounter(state) {
+      return state.counter * 2;
+    },
+    normalizedCounter(_, getters) {
+      const finalCounter = getters.finalCounter;
+      if (finalCounter < 0) {
+        return 0;
+      }
+      if (finalCounter > 100) {
+        return 100;
+      }
+      return finalCounter;
     }
   }
 });
