@@ -8,11 +8,11 @@ const store = createStore({
   state() {
     // state is a method, which returns the state object.
     return {
-      counter: 0
+      counter: 0 // We can now use this whole state in any component of this entire app. By {{ $store.state.counter }}
     };
   }
 });
 const app = createApp(App); 
 
-app.use(store); // Using the store
+app.use(store); // Using the store (Connecting app to store)
 app.mount('#app');
