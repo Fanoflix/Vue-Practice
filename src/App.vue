@@ -2,8 +2,8 @@
   <base-container title="Vuex">
     <the-counter></the-counter>
     <favourite-value></favourite-value>
-    <button @click="addOne">Add 1</button>
-    <button @click="subtractOne">Subtract 1</button>
+    <button @click="addOne">App Add 1</button>
+    <button @click="subtractOne">App Subtract 1</button>
 
     <change-counter></change-counter>
   </base-container>
@@ -30,7 +30,7 @@ export default {
   methods: {
     addOne() {
       // this.$store.state.counter += 11; //Intentional error. (Basically simulating a mistake where one component is change the state "counter" in a different way; adding 11 whereas another component ChangeCounter.vue is adding only 1).
-      this.$store.commit('increment', {value: 5});
+      this.$store.dispatch('increment', {value: 5});
     },
     subtractOne() {
       this.$store.commit('decrement', {value: 10});
