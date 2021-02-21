@@ -8,15 +8,16 @@ const store = createStore({
   state() {
     // state is a method, which returns the state object.
     return {
-      counter: 0 // We can now use this whole state in any component of this entire app. By {{ $store.state.counter }}
+      counter: 0
     };
   },
   mutations: {
-    increment(state) { // 
-      state.counter++;
+    // Here we define methods that mutate the states. Each method accepts state (to access the states above) and a payload; which can be any value or an object.
+    increment(state, payload) { // 
+      state.counter = state.counter + payload.value;
     },
-    decrement(state) {
-      state.counter--;
+    decrement(state, payload) {
+      state.counter = state.counter - payload.value;
     }
   }
 });
