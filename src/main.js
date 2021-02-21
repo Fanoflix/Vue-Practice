@@ -38,9 +38,10 @@ const store = createStore({
   },
   actions: {
     // Actions should be in between the components and the mutations. Actions allow asynchronous code. Each action takes in an object which you can name 'context'.
-    increment(context, payload) { // Can use the same name as the mutations
-      setTimeout( () => {
-        context.commit('increment', payload) // context has a commit method which is the same commit as we learned.
+    increment(context, payload) {
+      console.log(context);
+      setTimeout( () => {  
+        context.commit('increment', payload)
       }, 2000)
        
     }

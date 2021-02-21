@@ -29,7 +29,6 @@ export default {
   },
   methods: {
     addOne() {
-      // this.$store.state.counter += 11; //Intentional error. (Basically simulating a mistake where one component is change the state "counter" in a different way; adding 11 whereas another component ChangeCounter.vue is adding only 1).
       this.$store.dispatch('increment', {value: 5});
     },
     subtractOne() {
