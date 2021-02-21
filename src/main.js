@@ -10,6 +10,14 @@ const store = createStore({
     return {
       counter: 0 // We can now use this whole state in any component of this entire app. By {{ $store.state.counter }}
     };
+  },
+  mutations: {
+    increment(state) { // 
+      state.counter++;
+    },
+    decrement(state) {
+      state.counter--;
+    }
   }
 });
 const app = createApp(App); 
